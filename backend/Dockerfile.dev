@@ -1,0 +1,13 @@
+FROM maven:3.9.11-eclipse-temurin-25
+
+WORKDIR /app
+
+COPY pom.xml .
+RUN mvn -q -DskipTests dependency:go-offline
+
+COPY src ./src
+COPY uploads ./uploads
+
+EXPOSE 8080
+
+CMD ["mvn", "spring-boot:run"]
