@@ -49,9 +49,9 @@ public class ApiExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleMultipart(MaxUploadSizeExceededException ex) {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDateTime.now());
-        body.put("status", HttpStatus.PAYLOAD_TOO_LARGE.value());
+        body.put("status", HttpStatus.CONTENT_TOO_LARGE.value());
         body.put("error", "La imagen excede el tamaño permitido de 15 MB");
-        return ResponseEntity.status(HttpStatus.PAYLOAD_TOO_LARGE).body(body);
+        return ResponseEntity.status(HttpStatus.CONTENT_TOO_LARGE).body(body);
     }
 
     @ExceptionHandler(Exception.class)
